@@ -1,0 +1,14 @@
+<div>
+  <webcam
+    [trigger]="triggerObservable"
+    (imageCapture)="handleImage($event)"
+    [width]="width"
+  ></webcam>
+  <!-- webcam subscribes to triggerObservable. When triggerObservable fires, it makes the webcam send back the image via a imageCapture event -->
+</div>
+<div>
+  <button (click)="triggerSnapshot()">SNAP</button>
+</div>
+<div class="snapshot" *ngIf="webcamImage">
+  <img [src]="webcamImage.imageAsDataUrl" alt="" />
+</div>
